@@ -4,7 +4,7 @@ import random
 
 
 def neural_network(input, weights):
-    return input.dot(weights)
+    return np.clip(input.dot(weights), -1, 1)
 
 weights = np.array([0.5, 0.5, 0.5])
 data_points = []
@@ -15,8 +15,9 @@ def train():
         pred = neural_network(input, weights)
         delta = pred - point[2]
         for i in range(len(weights)):
-            weight_delta = delta * input[i]
+            weight_delta = delta * input[i] * 0.1
             weights[i] -= weight_delta
+
 
 # Инициализация Pygame
 pygame.init()
