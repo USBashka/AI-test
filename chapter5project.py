@@ -23,7 +23,7 @@ pygame.init()
 
 # Размеры окна и массива фона
 window_size = (512, 512)
-background_size = (128, 128)
+background_size = (64, 64)
 
 # Создание окна
 screen = pygame.display.set_mode(window_size)
@@ -38,12 +38,12 @@ while running:
     # Отрисовка фона
     for y in range(background_size[1]):
         for x in range(background_size[0]):
-            pred = neural_network(np.array([x/128, y/128, 1]), weights)
+            pred = neural_network(np.array([x/background_size[0], y/background_size[1], 1]), weights)
             if pred > 0:
                 color = [0, 0, np.clip(pred*255, 0, 255)]
             else:
                 color = [np.clip(-pred*255, 0, 255), np.clip(-pred*127, 0, 255), 0]
-            pygame.draw.rect(screen, color, (x * 4, y * 4, 4, 4))
+            pygame.draw.rect(screen, color, (x * 8, y * 8, 8, 8))
     
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
