@@ -1,6 +1,5 @@
 import numpy as np
 import pygame
-import random
 
 
 def neural_network(input, weights):
