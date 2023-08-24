@@ -3,17 +3,17 @@ import numpy as np
 
 
 def visualize(layers, weights, title='Визуализация Нейронной Сети'):
-    
+    """Show given neural network as a plot"""
     for i, layer in enumerate(layers):
         for j in range(layer):
             neuron_x = i
             neuron_y = max(layers) - (max(layers) - layer) / 2 - j  # Распределяем нейроны по вертикали
             if i == 0:
-                neuron_color = 'blue'
+                neuron_color = 'blue'  # Синий во входном слое
             elif i == len(layers) - 1:
-                neuron_color = '#FFAA66'
+                neuron_color = '#FFAA66'  # Бежевый в выходном слое
             else:
-                neuron_color = 'gray'
+                neuron_color = 'gray'  # Серый в скрытых слоях
 
             if i < len(layers) - 1:
                 next_layer = layers[i + 1]
@@ -27,7 +27,7 @@ def visualize(layers, weights, title='Визуализация Нейронно�
                     elif next_weight < 0:
                         plt.plot([neuron_x, next_neuron_x], [neuron_y, next_neuron_y], color='red', lw=-np.arctan(next_weight)*8)
             
-            plt.scatter(neuron_x, neuron_y, color=neuron_color, s=400, zorder=10)
+            plt.scatter(neuron_x, neuron_y, color=neuron_color, s=400, zorder=10)  # Рисует один нейрон
 
     plt.title(title, fontsize=16)
     plt.xlabel('Слои', fontsize=14)
@@ -37,9 +37,13 @@ def visualize(layers, weights, title='Визуализация Нейронно�
     plt.show()
 
 
-if __name__ == "__main__":
+
+def main():
     neural_network_layers = [2, 3, 1]  # Входной слой, скрытый слой, выходной слой
     neural_network_weights = [[[6, 2, -1],
                                [-8, 4, 1]],
-                               [[3], [7], [-0.5]]]
+                               [[3], [7], [-0.5]]]  # Веса модели
     visualize(neural_network_layers, neural_network_weights)
+
+if __name__ == "__main__":
+    main()
