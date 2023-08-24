@@ -1,6 +1,6 @@
-import pygame
-import time
 import numpy as np
+import pygame
+
 
 
 np.random.seed(1)
@@ -24,8 +24,6 @@ hidden_size = 4
 weights_0_1 = 2 * np.random.random((3, hidden_size)) - 1
 weights_1_2 = 2 * np.random.random((hidden_size, 1)) - 1
 
-errors = []
-
 for iter in range(60):
     layer_2_error = 0
     for i in range(len(streetlights)):
@@ -46,6 +44,7 @@ def neural_network(input):
     layer_1 = relu(np.dot(layer_0, weights_0_1))
     layer_2 = np.dot(layer_1, weights_1_2)
     return layer_2
+
 
 # Инициализация pygame
 pygame.init()
