@@ -90,7 +90,7 @@ while running:
 
     # Рисование светофора
     pygame.draw.rect(screen, "gray", (150, 50, 100, 200))
-    pygame.draw.rect(screen, "gray", (150, 250, 100, 200))
+    pygame.draw.rect(screen, "#777777", (150, 250, 100, 200))
     pygame.draw.rect(screen, "gray", (150, 450, 100, 200))
 
     # Включение цвета светофора
