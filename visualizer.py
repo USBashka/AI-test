@@ -34,7 +34,7 @@ def visualize(layers, weights, activations=[], title='Визуализация �
     plt.title(title, fontsize=16)
     plt.xlabel('Слои', fontsize=14)
     plt.ylabel('Нейроны', fontsize=14)
-    plt.xticks(range(len(layers)), [f'Слой {i+1}' for i in range(len(layers))], fontsize=12)
+    plt.xticks(range(len(layers)), [f'Слой {i}' for i in range(len(layers))], fontsize=12)
     plt.yticks([])
     plt.show()
 
